@@ -1,0 +1,16 @@
+/* Sidebar offset - pushes all main content to the right */
+.app-layout {
+  padding-left: 0;
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    padding-left: 0;
+  }
+}
+
+/* Reset padding for admin pages - they have their own sidebar */
+.admin-layout #root,
+.admin-layout .app-layout {
+  padding-left: 0 !important;
+}

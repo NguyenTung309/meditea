@@ -1,0 +1,127 @@
+.contact-page {
+  background-color: #fbf9f4;
+  color: #2d251b;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
+/* Hero Section */
+.contact__hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("https://images.meditea.vn/images/tea_plantation.png") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* Optional parallax effect */
+  padding: 100px 20px;
+}
+
+.contact__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 15, 10, 0.4), rgba(10, 15, 10, 0.7));
+  z-index: 1;
+}
+
+.contact__hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+}
+
+.contact__title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.contact__desc {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  opacity: 0.9;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Info Section */
+.contact__info-section {
+  padding: 80px 20px 100px;
+  background-color: #fbf9f4; /* Match site background */
+}
+
+.contact__info-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.contact__info-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 30px;
+}
+
+.contact__info-divider {
+  width: 1px;
+  background-color: #d1c9b6;
+  margin: 20px 0;
+}
+
+.contact__info-icon {
+  margin-bottom: 24px;
+  color: #4a4238; /* dark brown icon */
+}
+
+.contact__info-content {
+  font-size: 16px;
+  color: #2d251b;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Responsive constraints */
+@media (max-width: 768px) {
+  .contact__info-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact__info-divider {
+    height: 1px;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .contact__hero {
+    min-height: 50vh;
+  }
+}

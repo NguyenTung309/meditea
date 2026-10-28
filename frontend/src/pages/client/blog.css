@@ -1,0 +1,258 @@
+.blog-page {
+  background-color: #fff;
+  color: #2b3956;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  padding-top: 100px; /* Header spacing */
+}
+
+/* Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
+.blog__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Section */
+.blog__header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.blog__title {
+  font-size: 56px;
+  font-weight: 600;
+  color: #5d4638; /* dark brown matching the image */
+  margin-bottom: 40px;
+}
+
+.blog__tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #fbf9f4;
+  padding: 16px 20px;
+  margin: 0 auto;
+  max-width: max-content;
+  overflow-x: auto;
+}
+
+.blog__tab-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #888;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.blog__tab-btn:hover {
+  color: #5d4638;
+}
+
+.blog__tab-btn.active {
+  color: #2b3956;
+  font-weight: 600;
+}
+
+.blog__tab-divider {
+  color: #ccc;
+  font-weight: 300;
+  user-select: none;
+}
+
+/* Featured Section */
+.blog__featured-section {
+  padding: 60px 0;
+  background-color: #faf7f2; /* Light beige matching screenshot */
+}
+
+.blog__featured-card {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+  gap: 60px;
+}
+
+.blog__featured-text {
+  padding: 40px 0;
+}
+
+.blog__featured-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2b3956;
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+
+.blog__meta {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+
+.blog__featured-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.blog__read-more {
+  font-size: 14px;
+  color: #2b3956;
+  text-decoration: none;
+  border-bottom: 1px solid #2b3956;
+  padding-bottom: 2px;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.blog__read-more:hover {
+  opacity: 0.7;
+}
+
+.blog__featured-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.blog__featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Older Posts Section */
+.blog__older-section {
+  padding: 0 0 120px;
+}
+
+.blog__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.blog__card {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blog__card:hover {
+  transform: translateY(-5px);
+}
+
+.blog__card-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.blog__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog__card:hover .blog__card-img {
+  transform: scale(1.05);
+}
+
+.blog__card-content {
+  padding: 30px 20px 30px 0; /* padding logic mimics image 2 */
+  background: #fff; /* matching white bg from screenshot */
+}
+
+.blog__card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2b3956;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.blog__card-content .blog__meta {
+  margin-bottom: 16px;
+}
+
+.blog__card-excerpt {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .blog__featured-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog__featured-text {
+    padding: 40px 30px;
+    order: 2;
+  }
+  
+  .blog__featured-media {
+    order: 1;
+    height: 300px;
+  }
+  
+  .blog__featured-img {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog__tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .blog__tab-divider {
+    display: none;
+  }
+  
+  .blog__grid {
+    grid-template-columns: 1fr;
+  }
+}

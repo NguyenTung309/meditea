@@ -1,0 +1,36 @@
+﻿name: Deploy Medi-Tea to VPS
+
+on:
+  push:
+    branches:
+      - main # Chạy khi có code mới đẩy lên nhánh main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /var/www/meditea
+            
+            # Kéo code mới nhất từ Github
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Cập nhật và Build Backend
+            cd server
+            npm install
+            pm2 restart meditea-backend
+            
+            # Cập nhật và Build Frontend
+            cd ../frontend
+            npm install
+            npm run build
+            
+            echo "Deployment Successful!"

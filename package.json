@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "antd": "^6.3.2",
+    "lucide-react": "^0.577.0",
+    "react-spinners": "^0.17.0",
+    "tailwindcss": "^4.2.1",
+    "vnpay": "^2.4.4"
+  }
+}

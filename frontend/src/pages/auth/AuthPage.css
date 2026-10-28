@@ -1,0 +1,787 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+/* ===== FULL-PAGE BACKGROUND — LIGHT TEA THEME ===== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #f0f7e6 0%,
+    #e8f5d4 25%,
+    #f5f9ee 50%,
+    #eaf2dc 75%,
+    #f8faf3 100%
+  );
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* === Animated Tea Leaves Background === */
+
+/* Leaf element 1 */
+.auth-page .tea-leaf {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tea-leaf--1 {
+  width: 40px;
+  height: 40px;
+  top: 8%;
+  left: 10%;
+  opacity: 0.15;
+  animation: leafFloat1 12s ease-in-out infinite;
+}
+
+.tea-leaf--2 {
+  width: 30px;
+  height: 30px;
+  top: 15%;
+  right: 15%;
+  opacity: 0.12;
+  animation: leafFloat2 15s ease-in-out infinite;
+}
+
+.tea-leaf--3 {
+  width: 50px;
+  height: 50px;
+  bottom: 12%;
+  left: 8%;
+  opacity: 0.1;
+  animation: leafFloat3 18s ease-in-out infinite;
+}
+
+.tea-leaf--4 {
+  width: 35px;
+  height: 35px;
+  bottom: 20%;
+  right: 10%;
+  opacity: 0.13;
+  animation: leafFloat4 14s ease-in-out infinite;
+}
+
+.tea-leaf--5 {
+  width: 25px;
+  height: 25px;
+  top: 45%;
+  left: 5%;
+  opacity: 0.08;
+  animation: leafFloat5 16s ease-in-out infinite;
+}
+
+.tea-leaf--6 {
+  width: 45px;
+  height: 45px;
+  top: 60%;
+  right: 5%;
+  opacity: 0.1;
+  animation: leafFloat1 20s ease-in-out infinite reverse;
+}
+
+/* Tea leaf SVG shape via CSS */
+.tea-leaf svg {
+  width: 100%;
+  height: 100%;
+  fill: #86b43f;
+}
+
+@keyframes leafFloat1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, -30px) rotate(15deg);
+  }
+  50% {
+    transform: translate(-10px, -60px) rotate(-10deg);
+  }
+  75% {
+    transform: translate(15px, -30px) rotate(20deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes leafFloat2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-25px, 20px) rotate(-20deg);
+  }
+  50% {
+    transform: translate(15px, 45px) rotate(15deg);
+  }
+  75% {
+    transform: translate(-10px, 20px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes leafFloat3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(25deg) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, -40px) rotate(-15deg) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes leafFloat4 {
+  0% {
+    transform: translate(0, 0) rotate(5deg);
+  }
+  50% {
+    transform: translate(-30px, -25px) rotate(-20deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(5deg);
+  }
+}
+
+@keyframes leafFloat5 {
+  0% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+  40% {
+    transform: translate(25px, 15px) rotate(10deg);
+  }
+  70% {
+    transform: translate(-15px, 30px) rotate(-15deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+}
+
+/* === Steam rising animation === */
+.auth-page .tea-steam {
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(
+    to top,
+    transparent,
+    rgba(134, 180, 63, 0.08),
+    transparent
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tea-steam--1 {
+  left: 20%;
+  bottom: 30%;
+  animation: steamRise 6s ease-in-out infinite;
+}
+
+.tea-steam--2 {
+  left: 75%;
+  bottom: 25%;
+  animation: steamRise 8s ease-in-out infinite 2s;
+}
+
+.tea-steam--3 {
+  left: 50%;
+  bottom: 40%;
+  animation: steamRise 7s ease-in-out infinite 4s;
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleX(1);
+  }
+  20% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-80px) scaleX(1.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-160px) scaleX(0.5);
+    opacity: 0;
+  }
+}
+
+/* === Soft circles — bokeh-like === */
+.auth-page .auth-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.auth-circle--1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(134, 180, 63, 0.08),
+    transparent 70%
+  );
+  top: -100px;
+  right: -80px;
+  animation: circleFloat 10s ease-in-out infinite alternate;
+}
+
+.auth-circle--2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(134, 180, 63, 0.06),
+    transparent 70%
+  );
+  bottom: -80px;
+  left: -60px;
+  animation: circleFloat 12s ease-in-out infinite alternate-reverse;
+}
+
+.auth-circle--3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 230, 150, 0.1),
+    transparent 70%
+  );
+  top: 50%;
+  left: 60%;
+  animation: circleFloat 14s ease-in-out infinite alternate;
+}
+
+@keyframes circleFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(1.15);
+  }
+}
+
+/* ===== GLASS CARD ===== */
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: 44px 38px 36px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(134, 180, 63, 0.12);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  animation: cardEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== LOGO & BRANDING ===== */
+.auth-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-logo-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #86b43f, #6a9a2e);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow:
+    0 10px 30px rgba(134, 180, 63, 0.3),
+    0 0 0 6px rgba(134, 180, 63, 0.08);
+  margin-bottom: 18px;
+  animation: logoBreath 4s ease-in-out infinite;
+}
+
+@keyframes logoBreath {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 10px 30px rgba(134, 180, 63, 0.3),
+      0 0 0 6px rgba(134, 180, 63, 0.08);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow:
+      0 14px 36px rgba(134, 180, 63, 0.35),
+      0 0 0 8px rgba(134, 180, 63, 0.1);
+  }
+}
+
+.auth-logo-title {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a2e12;
+  margin: 0 0 6px;
+  letter-spacing: 0.3px;
+}
+
+.auth-logo-subtitle {
+  font-size: 14px;
+  color: #6b7f60;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.auth-card .ant-form {
+  width: 100%;
+}
+
+.auth-card .ant-form-item {
+  margin-bottom: 20px;
+}
+
+.auth-card .ant-form-item-label > label {
+  color: #2d3e24 !important;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Shared base style for all input wrappers — matches DatePicker look */
+.auth-card .ant-input-affix-wrapper,
+.auth-card .ant-input-password,
+.auth-card .ant-picker {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(134, 180, 63, 0.2) !important;
+  border-radius: 14px !important;
+  color: #1a2e12 !important;
+  padding: 11px 16px !important;
+  font-size: 14px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  height: auto !important;
+}
+
+/* Plain Input without prefix/suffix (no affix-wrapper) */
+.auth-card .ant-input:not(.ant-input-affix-wrapper .ant-input) {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(134, 180, 63, 0.2) !important;
+  border-radius: 14px !important;
+  color: #1a2e12 !important;
+  padding: 11px 16px !important;
+  font-size: 14px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  height: auto !important;
+}
+
+/* Inner input inside affix-wrapper — no own border/padding/bg */
+.auth-card .ant-input-affix-wrapper .ant-input,
+.auth-card .ant-input-password .ant-input {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #1a2e12 !important;
+  font-size: 14px !important;
+  height: auto !important;
+}
+
+/* Placeholder colour */
+.auth-card .ant-input::placeholder,
+.auth-card .ant-input-affix-wrapper .ant-input::placeholder,
+.auth-card .ant-input-password .ant-input::placeholder {
+  color: rgba(107, 127, 96, 0.5) !important;
+}
+
+/* Hover */
+.auth-card .ant-input:not(.ant-input-affix-wrapper .ant-input):hover,
+.auth-card .ant-input-affix-wrapper:hover,
+.auth-card .ant-input-password:hover,
+.auth-card .ant-picker:hover {
+  border-color: rgba(134, 180, 63, 0.45) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Focus */
+.auth-card .ant-input:not(.ant-input-affix-wrapper .ant-input):focus,
+.auth-card .ant-input-affix-wrapper:focus-within,
+.auth-card .ant-input-affix-wrapper-focused,
+.auth-card .ant-input-password:focus-within,
+.auth-card .ant-picker-focused {
+  border-color: #86b43f !important;
+  box-shadow: 0 0 0 4px rgba(134, 180, 63, 0.1) !important;
+  background: #fff !important;
+}
+
+/* Input prefix icons */
+.auth-card .ant-input-prefix {
+  color: #86b43f !important;
+  margin-right: 10px !important;
+  font-size: 16px !important;
+}
+
+.auth-card .ant-input-suffix {
+  color: rgba(107, 127, 96, 0.5) !important;
+}
+
+.auth-card .ant-input-password .ant-input-suffix {
+  color: rgba(107, 127, 96, 0.5) !important;
+}
+
+/* DatePicker */
+.auth-card .ant-picker {
+  width: 100% !important;
+}
+
+.auth-card .ant-picker-input > input {
+  color: #1a2e12 !important;
+}
+
+.auth-card .ant-picker-input > input::placeholder {
+  color: rgba(107, 127, 96, 0.5) !important;
+}
+
+.auth-card .ant-picker-suffix,
+.auth-card .ant-picker-clear {
+  color: #86b43f !important;
+}
+
+/* Radio Group */
+.auth-card .ant-radio-wrapper {
+  color: #2d3e24 !important;
+}
+
+.auth-card .ant-radio-inner {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(134, 180, 63, 0.35) !important;
+}
+
+.auth-card .ant-radio-checked .ant-radio-inner {
+  border-color: #86b43f !important;
+  background: #86b43f !important;
+}
+
+/* Checkbox */
+.auth-card .ant-checkbox-wrapper {
+  color: #4a5e3f !important;
+  font-size: 13px;
+}
+
+.auth-card .ant-checkbox .ant-checkbox-inner {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(134, 180, 63, 0.35) !important;
+  border-radius: 5px;
+}
+
+.auth-card .ant-checkbox-checked .ant-checkbox-inner {
+  background: #86b43f !important;
+  border-color: #86b43f !important;
+}
+
+/* ===== BUTTONS ===== */
+.auth-btn-primary {
+  width: 100%;
+  height: 48px !important;
+  border-radius: 14px !important;
+  border: none !important;
+  background: linear-gradient(135deg, #86b43f 0%, #6a9a2e 100%) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 6px 20px rgba(134, 180, 63, 0.3) !important;
+}
+
+.auth-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.auth-btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.auth-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 32px rgba(134, 180, 63, 0.4) !important;
+}
+
+.auth-btn-primary:active {
+  transform: translateY(0) !important;
+}
+
+/* Google Button */
+.auth-btn-google {
+  width: 100%;
+  height: 46px !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.08) !important;
+  color: #2d3e24 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease !important;
+}
+
+.auth-btn-google:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(134, 180, 63, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  transform: translateY(-1px);
+}
+
+/* ===== DIVIDER ===== */
+.auth-divider {
+  margin: 22px 0 !important;
+}
+
+.auth-divider .ant-divider-inner-text {
+  color: #8a9c7e !important;
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  border-color: rgba(134, 180, 63, 0.15) !important;
+}
+
+/* ===== FORGOT PASSWORD ===== */
+.auth-forgot-link {
+  display: block;
+  text-align: right;
+}
+
+.auth-forgot-link .ant-btn {
+  color: #6a9a2e !important;
+  font-size: 13px !important;
+  padding: 0 !important;
+  height: auto !important;
+  font-weight: 500;
+}
+
+.auth-forgot-link .ant-btn:hover {
+  color: #86b43f !important;
+}
+
+/* ===== REMEMBER ME ROW ===== */
+.auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+/* ===== BOTTOM LINK ===== */
+.auth-bottom-link {
+  text-align: center;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(134, 180, 63, 0.1);
+}
+
+.auth-bottom-link span {
+  color: #6b7f60;
+  font-size: 13px;
+}
+
+.auth-bottom-link a,
+.auth-bottom-link .ant-btn {
+  color: #6a9a2e !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  padding: 0 4px !important;
+  height: auto !important;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.auth-bottom-link a:hover,
+.auth-bottom-link .ant-btn:hover {
+  color: #86b43f !important;
+}
+
+/* ===== FORM ERROR MESSAGES ===== */
+.auth-card .ant-form-item-explain-error {
+  color: #e74c3c !important;
+  font-size: 12px !important;
+  margin-top: 4px;
+}
+
+.auth-card .ant-form-item-required::before {
+  color: #e74c3c !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 20px 16px;
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+
+  .auth-card {
+    padding: 32px 24px 28px;
+    border-radius: 22px;
+    max-width: 100%;
+  }
+
+  .auth-logo-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+    border-radius: 16px;
+  }
+
+  .auth-logo-title {
+    font-size: 24px;
+  }
+
+  .auth-btn-primary {
+    height: 44px !important;
+  }
+
+  .tea-leaf--5,
+  .tea-leaf--6 {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .auth-card {
+    padding: 24px 18px;
+  }
+}
+
+/* ===== FORGOT PASSWORD — STEPS ===== */
+.auth-steps {
+  margin-bottom: 28px;
+}
+
+.auth-steps .ant-steps-item-process .ant-steps-item-icon {
+  background: #86b43f !important;
+  border-color: #86b43f !important;
+}
+
+.auth-steps .ant-steps-item-finish .ant-steps-item-icon {
+  border-color: #86b43f !important;
+}
+
+.auth-steps .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: #86b43f !important;
+}
+
+.auth-steps
+  .ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-tail::after {
+  background: #86b43f !important;
+}
+
+.auth-steps .ant-steps-item-title {
+  font-size: 13px !important;
+  font-weight: 500;
+  color: #4a5e3f !important;
+}
+
+.auth-step-content {
+  animation: stepFadeIn 0.4s ease both;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.auth-step-desc {
+  font-size: 13.5px;
+  color: #5a6e50;
+  line-height: 1.7;
+  margin: 0 0 22px;
+  text-align: center;
+}
+
+.auth-step-desc strong {
+  color: #2d3e24;
+  font-weight: 700;
+}
+
+/* OTP resend */
+.auth-resend-otp {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.auth-resend-otp span {
+  color: #8a9c7e;
+  font-size: 13px;
+}
+
+.auth-resend-otp .ant-btn {
+  color: #6a9a2e !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+.auth-resend-otp .ant-btn:hover {
+  color: #86b43f !important;
+}

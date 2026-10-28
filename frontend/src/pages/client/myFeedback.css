@@ -1,0 +1,152 @@
+.feedback-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.my-feedback-page {
+  min-height: 70vh;
+  background: #f5f5f5;
+  padding: 40px 16px;
+}
+
+.my-feedback-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.my-feedback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.my-feedback-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.my-feedback-icon {
+  font-size: 28px;
+  color: #3665f3;
+}
+
+.my-feedback-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
+}
+
+.my-feedback-empty {
+  background: #fff;
+  border-radius: 12px;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.my-feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feedback-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+.feedback-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.feedback-subject {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222;
+}
+
+.feedback-message {
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: #fafafa;
+  border-radius: 8px;
+  border-left: 3px solid #d9d9d9;
+}
+
+.feedback-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.feedback-message p {
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+.feedback-reply {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #e8f4fd, #f0f7ff);
+  border-radius: 8px;
+  border-left: 3px solid #3665f3;
+}
+
+.feedback-reply-label {
+  font-size: 13px;
+  color: #3665f3;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.feedback-reply p {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.feedback-date {
+  font-size: 12px;
+  color: #999;
+}
+
+@media (max-width: 640px) {
+  .my-feedback-page {
+    padding: 20px 10px;
+  }
+
+  .my-feedback-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .my-feedback-header h1 {
+    font-size: 22px;
+  }
+
+  .feedback-card {
+    padding: 16px;
+  }
+
+  .feedback-subject {
+    font-size: 15px;
+  }
+}

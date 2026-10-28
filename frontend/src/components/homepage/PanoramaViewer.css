@@ -1,0 +1,438 @@
+/* ═══════════════════════════════════════════════════════════════
+   PanoramaViewer — Fullscreen 360° Modal Custom UI
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Overlay ── */
+.panorama-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: panoramaFadeIn 0.4s ease forwards;
+}
+
+@keyframes panoramaFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panorama-overlay--closing {
+  animation: panoramaFadeOut 0.35s ease forwards;
+}
+
+@keyframes panoramaFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ── Container ── */
+.panorama-container {
+  position: relative;
+  width: 96vw;
+  height: 92vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  animation: panoramaScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes panoramaScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.panorama-overlay--closing .panorama-container {
+  animation: panoramaScaleOut 0.3s ease forwards;
+}
+
+@keyframes panoramaScaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ── Viewer ── */
+.panorama-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Common Btn Styles ── */
+.vr-btn {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  color: white;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.vr-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
+}
+.vr-btn:active {
+  transform: scale(0.94);
+}
+
+/* Hide standard Pannellum elements that might leak despite settings */
+.pnlm-load-box,
+.pnlm-controls-container,
+.pnlm-about-msg {
+  display: none !important;
+}
+
+/* Override legacy hotspot rules completely */
+.pnlm-hotspot-base {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 50px !important;
+  height: 50px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.custom-hotspot {
+  display: block !important;
+  cursor: pointer;
+}
+
+/* ── Animated Hotspot Container ── */
+.animated-hotspot-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.animated-hotspot-arrow {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: hotspotPulse 2s infinite ease-in-out;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.animated-hotspot-arrow::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
+  transform: rotate(-45deg); /* Point Up */
+  margin-top: 4px; /* offset slightly to visually center */
+  transition: transform 0.3s ease;
+}
+
+.animated-hotspot-container:hover .animated-hotspot-arrow {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #a5d65b;
+  transform: scale(1.1);
+}
+
+.animated-hotspot-container:hover .animated-hotspot-arrow::before {
+  border-color: #2b3a2b;
+}
+
+@keyframes hotspotPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    transform: translateY(-3px);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Tooltip on hover */
+.animated-hotspot-tooltip {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-family: "Playfair Display", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.animated-hotspot-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.85);
+}
+
+.animated-hotspot-container:hover .animated-hotspot-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Top Controls ── */
+.vr-btn--close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 99;
+  border-color: transparent;
+  background: rgba(0, 0, 0, 0.4);
+}
+.vr-btn--close:hover {
+  background: rgba(255, 50, 50, 0.7);
+  border-color: transparent;
+}
+
+.vr-top-left-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 99;
+}
+.vr-top-left-controls .vr-btn {
+  width: 44px;
+  height: 44px;
+}
+
+/* ── Top Center Logo ── */
+.vr-top-center-brand {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.vr-brand-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Bottom UI Layout ── */
+.vr-bottom-ui {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 25px; /* lift slightly off screen edge */
+  pointer-events: none; /* Let clicks pass through empty spaces */
+}
+
+.vr-controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  pointer-events: auto; /* re-enable pointer events for controls */
+}
+
+/* The UP button positioned slightly above the central row */
+.vr-btn-up {
+  margin-bottom: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.vr-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vr-btn-row .vr-btn {
+  width: 46px;
+  height: 46px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.15
+  ); /* Slightly darker backing to contrast bright scenes */
+}
+
+/* Simulated wooden bar underneath */
+.vr-bottom-plank {
+  width: 480px;
+  height: 28px;
+  margin-top: 6px;
+
+  /* Create the wooden/brown bar look like the image */
+  background: linear-gradient(
+    90deg,
+    rgba(141, 107, 74, 0) 0%,
+    rgba(125, 87, 56, 0.8) 20%,
+    rgba(102, 65, 34, 0.9) 50%,
+    rgba(125, 87, 56, 0.8) 80%,
+    rgba(141, 107, 74, 0) 100%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* to let the down button sit on top */
+  position: relative;
+}
+
+/* The DOWN button sitting inside the plank */
+.vr-btn-down {
+  position: absolute;
+  top: -12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ── Loading Spinner ── */
+.panorama-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(20, 30, 20, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.panorama-loading__spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: panoramaSpin 0.8s linear infinite;
+}
+
+@keyframes panoramaSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.panorama-loading__text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* ── Responsive Adjustments ── */
+@media (max-width: 768px) {
+  .panorama-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .vr-btn-row {
+    gap: 8px;
+  }
+
+  .vr-btn-row .vr-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vr-btn-row .vr-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .vr-bottom-plank {
+    width: 100vw;
+  }
+
+  .vr-top-left-controls .vr-btn,
+  .vr-btn-up,
+  .vr-btn-down {
+    width: 38px;
+    height: 38px;
+  }
+
+  .vr-btn--close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vr-brand-title {
+    font-size: 20px;
+  }
+}
